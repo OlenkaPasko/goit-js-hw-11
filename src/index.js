@@ -16,7 +16,7 @@ let currentPage = 1;
 //Форма пошуку
 function onSearchForm(event) {
   event.preventDefault();
-  searchQuerry = event.target.value.trim();
+  searchQuerry = event.currentTarget.searchQuery.value.trim();
   if (searchQuerry === '') {
     refs.btnLoadMore.classList.add('is-hidden');
     Notify.failure('Enter something.');
