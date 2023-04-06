@@ -4,21 +4,35 @@ import { getPhotos } from './js/apiPixabay';
 
 const refs = {
   form: document.querySelector('.search-form'),
-  input: document.querySelector('[type="text"]'),
-  btnSearch: document.querySelector('[type="submit"]'),
   btnLoadMore: document.querySelector('.load-more'),
   gallery: document.querySelector('.gallery'),
 };
 
-//let searchQuerry = '';
+refs.form.addEventListener('submit', onSearchForm);
+refs.btnLoadMore.addEventListener('click',onBtnLoad);
+
+let searchQuerry = '';
 //let currentPage = 1;
 
-refs.form.addEventListener('submit')
-
-
-
 //Форма пошуку
-const onSearchForm = async function {
-
+function onSearchForm(event) {
+  event.preventDefault();
+  searchQuerry = event.target.value.trim().toLowerCase();
+  if (searchQuerry === '') {
+    refs.btnLoadMore.classList.add('is-hidden');
+    Notify.failure('Enter something.');
+  } else {
+    fetchImage(url).then(cards => {
+      if (cards.total === 0) {
+        refs.btnLoadMore.classList.add('is-hidden');
+        Notify.failure(
+          'Sorry, there are no images matching your search query. Please try again.'
+        );
+      }
+    });
+  }
 }
 
+function onBtnLoad() {
+    fetchImage(url);
+}
