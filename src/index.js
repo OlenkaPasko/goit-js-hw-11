@@ -9,7 +9,7 @@ const API_KEY = '335113425-894140f70267936d7d418e310';
 //const url = `${BASE_URL}?key=${API_KEY}&q=${searchQuery}&type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${currentPage}`;
 
 const refs = {
-  form: document.querySelector('.search-form'),
+  form: document.querySelector('#search-form'),
   btnLoadMore: document.querySelector('.load-more'),
   gallery: document.querySelector('.gallery'),
 };
@@ -19,6 +19,7 @@ refs.btnLoadMore.addEventListener('click', onBtnLoad);
 
 let searchQuery = '';
 let currentPage = 1;
+//let currentHits = 0;
 
 //Форма пошуку
 function onSearchForm(event) {
@@ -30,6 +31,7 @@ function onSearchForm(event) {
     refs.gallery.innerHTML = '';
     refs.btnLoadMore.classList.add('is-hidden');
     Notiflix.Notify.failure('Enter something.');
+
   } else {
     fetchImage(url).then(cards => {
       if (cards.totalHits === 0) {
@@ -49,10 +51,10 @@ async function fetchImage(url){
   try {
     const response = await axios(url);
     const cards = response.data;
-    refs.gallery.insertAdjacentHTML('beforeend',renderGallery(cards));
+    refs.gallery.insertAdjacentHTML('beforeend', renderGallery(cards));
     currentPage += 1;
     refs.btnLoadMore.classList.remove('is-hidden');
-    lightbox.refresh();
+    //lightbox.refresh();
     return cards;
   } catch {
     refs.btnLoadMore.classList.add('is-hidden');
