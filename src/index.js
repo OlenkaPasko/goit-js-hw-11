@@ -21,7 +21,7 @@ function onSearchForm(event) {
   currentPage = 1;
   if (searchQuery === '') {
     refs.btnLoadMore.classList.add('is-hidden');
-    Notify.failure('Enter something.');
+    Notiflix.ConfirmNotify.failure('Enter something.');
   } else {
     fetchImage(url).then(cards => {
       if (cards.total === 0) {
