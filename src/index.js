@@ -24,6 +24,7 @@ let currentPage = 1;
 function onSearchForm(event) {
   event.preventDefault();
   searchQuery = event.currentTarget.searchQuery.value.trim();
+  const url = `${BASE_URL}?key=${API_KEY}&q=${searchQuerry}&type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${currentPage}`;
   currentPage = 1;
   if (searchQuery === '') {
     refs.btnLoadMore.classList.add('is-hidden');
@@ -60,6 +61,7 @@ async function fetchImage(url){
 }
 
 function onBtnLoad() {
+  const url = `${BASE_URL}?key=${API_KEY}&q=${searchQuerry}&type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${currentPage}`;
   fetchImage(url);
 }
 /*галерея і картка зображень*/
