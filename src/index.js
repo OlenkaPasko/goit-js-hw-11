@@ -22,10 +22,10 @@ let currentPage = 1;
 
 //Форма пошуку
 function onSearchForm(event) {
+  currentPage = 1;
   event.preventDefault();
   searchQuery = event.currentTarget.searchQuery.value.trim();
   const url = `${BASE_URL}?key=${API_KEY}&q=${searchQuery}&type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${currentPage}`;
-  currentPage = 1;
   if (searchQuery === '') {
     refs.btnLoadMore.classList.add('is-hidden');
     Notiflix.Notify.failure('Enter something.');
