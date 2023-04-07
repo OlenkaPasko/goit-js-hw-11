@@ -17,6 +17,7 @@ let currentPage = 1;
 function onSearchForm(event) {
   event.preventDefault();
   searchQuerry = event.currentTarget.searchQuerry.value.trim();
+  currentPage = 1;
   if (searchQuerry === '') {
     refs.btnLoadMore.classList.add('is-hidden');
     Notify.failure('Enter something.');
@@ -53,24 +54,7 @@ async function fetchImage(url) {
 function onBtnLoad() {
   fetchImage(url);
 }
-/*галерея і картка зображень
- <div class="photo-card">
-  <img src="" alt="" loading="lazy" />
-  <div class="info">
-    <p class="info-item">
-      <b>Likes</b>
-    </p>
-    <p class="info-item">
-      <b>Views</b>
-    </p>
-    <p class="info-item">
-      <b>Comments</b>
-    </p>
-    <p class="info-item">
-      <b>Downloads</b>
-    </p>
-  </div>
-</div> */
+/*галерея і картка зображень*/
 
 function renderGallery(cards) {
   const markup = cards
