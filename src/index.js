@@ -1,11 +1,12 @@
 import Notiflix from 'notiflix';
+import axios from 'axios';
 //import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { getPhotos } from './js/apiPixabay.js';
+//import { getPhotos } from './js/apiPixabay.js';
 
 
 const BASE_URL = 'https://pixabay.com/api';
 const API_KEY = '335113425-894140f70267936d7d418e310';
-const url = `${BASE_URL}?key=${API_KEY}&q=${value}&type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${page}`;
+//const url = `${BASE_URL}?key=${API_KEY}&q=${searchQuery}&type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${currentPage}`;
 
 const refs = {
   form: document.querySelector('.search-form'),
@@ -26,7 +27,7 @@ function onSearchForm(event) {
   currentPage = 1;
   if (searchQuery === '') {
     refs.btnLoadMore.classList.add('is-hidden');
-    Notiflix.ConfirmNotify.failure('Enter something.');
+    Notiflix.Notify.failure('Enter something.');
   } else {
     fetchImage(url).then(cards => {
       if (cards.total === 0) {
@@ -43,8 +44,9 @@ function onSearchForm(event) {
 
 async function fetchImage(url){
   try {
+    const response = await axios(url);
     const cards = response.data;
-    refs.gallery.insertAdjacentHTML('beforeend');
+    refs.gallery.insertAdjacentHTML('beforeend',renderGallery(cards));
     currentPage += 1;
     refs.btnLoadMore.classList.remove('is-hidden');
     lightbox.refresh();
