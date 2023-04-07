@@ -34,7 +34,7 @@ function onSearchForm(event) {
 
   } else {
     fetchImage(url).then(cards => {
-      if (cards.totalHits === 0) {
+      if (cards.length === 0) {
         refs.gallery.innerHTML = '';
         refs.btnLoadMore.classList.add('is-hidden');
         Notiflix.Notify.failure(
