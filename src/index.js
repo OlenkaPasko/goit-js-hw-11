@@ -10,15 +10,15 @@ const refs = {
 refs.form.addEventListener('submit', onSearchForm);
 refs.btnLoadMore.addEventListener('click', onBtnLoad);
 
-let searchQuerry = '';
+let searchQuery = '';
 let currentPage = 1;
 
 //Форма пошуку
 function onSearchForm(event) {
   event.preventDefault();
-  searchQuerry = event.currentTarget.searchQuerry.value.trim();
+  searchQuery = event.currentTarget.searchQuery.value.trim();
   currentPage = 1;
-  if (searchQuerry === '') {
+  if (searchQuery === '') {
     refs.btnLoadMore.classList.add('is-hidden');
     Notify.failure('Enter something.');
   } else {
