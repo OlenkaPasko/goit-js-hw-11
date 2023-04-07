@@ -1,4 +1,5 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Notiflix from 'notiflix';
+//import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { getPhotos } from './js/apiPixabay';
 
 const refs = {
@@ -25,7 +26,7 @@ function onSearchForm(event) {
     fetchImage(url).then(cards => {
       if (cards.total === 0) {
         refs.btnLoadMore.classList.add('is-hidden');
-        Notify.failure(
+        Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
         );
       }
@@ -35,7 +36,7 @@ function onSearchForm(event) {
 
 //"We're sorry, but you've reached the end of search results."
 
-async function fetchImage(url) {
+async function fetchImage(url){
   try {
     const cards = response.data;
     refs.gallery.insertAdjacentHTML('beforeend');
@@ -45,7 +46,7 @@ async function fetchImage(url) {
     return cards;
   } catch {
     refs.btnLoadMore.classList.add('is-hidden');
-    Notify.failure(
+    Notiflix.Notify.failure(
       "We're sorry, but you've reached the end of search results."
     );
   }
