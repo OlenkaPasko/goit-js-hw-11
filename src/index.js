@@ -27,11 +27,13 @@ function onSearchForm(event) {
   searchQuery = event.currentTarget.searchQuery.value.trim();
   const url = `${BASE_URL}?key=${API_KEY}&q=${searchQuery}&type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${currentPage}`;
   if (searchQuery === '') {
+    refs.gallery.innerHTML = '';
     refs.btnLoadMore.classList.add('is-hidden');
     Notiflix.Notify.failure('Enter something.');
   } else {
     fetchImage(url).then(cards => {
-      if (cards.total === 0) {
+      if (cards.totalHits === 0) {
+        refs.gallery.innerHTML = '';
         refs.btnLoadMore.classList.add('is-hidden');
         Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
