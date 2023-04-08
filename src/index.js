@@ -5,7 +5,9 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const API_KEY = '35113425-894140f70267936d7d418e310';
 const BASE_URL = 'https://pixabay.com/api/';
-const lightbox = new SimpleLightbox('.gallery');
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+});
 
 const refs = {
   form: document.querySelector('#search-form'),
@@ -35,6 +37,7 @@ function onSearchForm(event) {
         Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
         );
+        //if (response.data.totalHits <= page * 40)
       } else {
         Notiflix.Notify.success(`Hooray! We found ${cards.totalHits} images.`);
       }
