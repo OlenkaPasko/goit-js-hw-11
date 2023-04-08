@@ -1,8 +1,12 @@
 import Notiflix from 'notiflix';
 import axios from 'axios';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const API_KEY = '35113425-894140f70267936d7d418e310';
 const BASE_URL = 'https://pixabay.com/api/';
+const lightbox = new SimpleLightbox('.gallery');
+
 const refs = {
   form: document.querySelector('#search-form'),
   gallery: document.querySelector('.gallery'),
@@ -11,7 +15,6 @@ const refs = {
 
 let searchQuery = '';
 let currentPage = 1;
-let currentHits = 0;
 
 refs.form.addEventListener('submit', onSearchForm);
 refs.btnLoadMor.addEventListener('click', onBtnLoad);
@@ -45,6 +48,7 @@ async function fetchImage(url) {
     refs.gallery.insertAdjacentHTML('beforeend', renderCards(cards));
     currentPage += 1;
     refs.btnLoadMor.classList.remove('is-hidden');
+    lightbox.refresh();
     return cards;
   } catch {
     refs.btnLoadMor.classList.add('is-hidden');
