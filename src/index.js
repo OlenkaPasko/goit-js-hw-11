@@ -21,6 +21,7 @@ let currentPage = 1;
 
 refs.form.addEventListener('submit', onSearchForm);
 refs.btnLoadMor.addEventListener('click', onBtnLoad);
+refs.btnLoadMor.classList.add('is-hidden');
 
 function onSearchForm(event) {
   currentPage = 1;
