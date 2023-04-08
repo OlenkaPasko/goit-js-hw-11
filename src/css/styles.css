@@ -29,8 +29,7 @@
      display: flex;
  }
 
- #search-form,
- .load-more {
+ #search-form {
 
      margin: 0 auto;
      padding: 15px;
