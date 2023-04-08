@@ -21,7 +21,7 @@ let currentPage = 1;
 
 refs.form.addEventListener('submit', onSearchForm);
 refs.btnLoadMor.addEventListener('click', onBtnLoad);
-refs.btnLoadMor.classList.add('is-hidden');
+
 
 function onSearchForm(event) {
   currentPage = 1;
@@ -63,6 +63,7 @@ async function fetchImage(url) {
   }
 }
 function onBtnLoad() {
+  
   const url = `${BASE_URL}?key=${API_KEY}&q=${searchQuery}&type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${currentPage}`;
   fetchImage(url);
 }
