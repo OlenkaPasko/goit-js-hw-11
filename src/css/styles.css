@@ -38,9 +38,14 @@ image {
 }
 
 #search-box {
-    display: block;
+
     margin: 0 auto;
     padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
     color: gray;
 }
 
@@ -49,11 +54,7 @@ input {
     height: 20px;
     border: 1px solid black;
     outline: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-right: auto;
-    margin-left: auto;
+    
 }
 
 .button {
