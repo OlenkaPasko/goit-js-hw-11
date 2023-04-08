@@ -41,7 +41,7 @@ image {
     display: block;
     margin: 0 auto;
     padding: 15px;
-    color: rgba(red, green, blue, alpha)
+    color: gray;
 }
 
 input {
