@@ -51,15 +51,16 @@
 
  }
 
- .button,
+ .search-button,
  .load-more {
-     background: #428BCA;
-     color: #fff;
+     padding: 20px;
      font-family: Sans-serif;
      font-size: 20px;
-     line-height: 60px;
      text-align: center;
      border: 0;
+     background: #428BCA;
+     color: #fff;
+
      transition: all 0.3s ease 0s;
  }
 
