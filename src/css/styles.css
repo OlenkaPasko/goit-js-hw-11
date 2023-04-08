@@ -76,4 +76,5 @@
         display: flex;
         gap: 83px;
         flex-wrap: wrap;
+        justify-content: center
     }
