@@ -35,7 +35,8 @@
      margin: 0 auto;
      padding: 15px;
      display: flex;
-     justify-content: space-between;
+     flex-direction: row;
+     align-items: center;
      align-items: center;
      margin-right: auto;
      margin-left: auto;
@@ -43,7 +44,7 @@
  }
 
  input {
-
+    margin-left: 20px;
      height: 20px;
      padding: 20px;
      border: 1px solid darkblue;
@@ -55,6 +56,7 @@
  .load-more {
      padding: 20px;
      font-family: Sans-serif;
+     height: 20px;
      font-size: 20px;
      text-align: center;
      border: 0;
