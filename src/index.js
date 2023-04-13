@@ -69,7 +69,7 @@ function onBtnLoad() {
 }
 
 function renderCards(cards) {
-  return cards.totalHits
+  return cards.hits
     .map(
       ({
         webformatURL,
